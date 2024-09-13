@@ -7,6 +7,16 @@ const propertySchema = new mongoose.Schema({
     prop_type  : {type : String , required : true},
     name : {type : String , required : true},
     image : {type : String , required : true},
+    price_range : {
+      min : {
+        type : String,
+        requried : true,
+      },
+      max : {
+        type : String,
+        requried : true,
+      },
+    },
     location : {
       name : {
         type : String,

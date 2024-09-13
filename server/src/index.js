@@ -3,6 +3,8 @@ import cors from "cors";
 
 
 import authRouter from "./routers/auth.router.js";
+import userRouter from "./routers/user.router.js";
+import propertyRouter from "./routers/property.router.js";
 
 import connectDB from "./mongodb/index.js";
 
@@ -29,7 +31,8 @@ app.get("/", (req, res) => {
     res.send({message: "Hello World"});
 });
 app.use('/api/auth', authRouter);
-
+app.use('/api/user', userRouter);
+app.use('/api/property', propertyRouter);
 
 const startServer = async () => {
     try {
