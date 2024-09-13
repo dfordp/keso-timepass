@@ -34,7 +34,7 @@ const propertySchema = new mongoose.Schema({
 },{timestamps : true});
 
 
-const property = mongoose.model("User",propertySchema);
+const property = mongoose.model("Property",propertySchema);
 
 export default property;
 
