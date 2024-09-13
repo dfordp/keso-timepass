@@ -25,16 +25,12 @@ const Onboarding = () => {
         email,
         name,
       }
-      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/register`, data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/register`, data);
       const token = res.data.token;
       const _id = res.data.newUser._id;
       localStorage.setItem("token",token);
       localStorage.setItem("_id",_id); 
-      navigate('/records')
+      navigate('/')
     }
     catch(e){
       console.log(e);   

@@ -25,7 +25,7 @@ const Auth = () => {
         localStorage.setItem("token",token);
         localStorage.setItem("_id",_id); 
         localStorage.setItem("email",email);
-        navigate('/records')
+        navigate('/')
         window.location.reload();
       }
     } catch (error: unknown) {

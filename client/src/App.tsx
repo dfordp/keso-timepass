@@ -6,6 +6,8 @@ import Sidebar from "./components/elements/Sidebar";
 import TopBar from "./components/elements/Topbar";
 import Auth from "./pages/Auth";
 import Onboarding from "./pages/Onboarding";
+import Home from "./pages/Home";
+import Properties from "./pages/Properties";
 
 
 const Navigate = () => {
@@ -20,8 +22,8 @@ const Navigate = () => {
 
       if(check){
         setisAuthenticated(true);
-        if(location.pathname == "/"){
-          navigate('/records')
+        if(location.pathname == "/auth"){
+          navigate('/')
         }        
       }
       else{
@@ -43,12 +45,8 @@ const Navigate = () => {
           <div className="flex flex-col">
             <TopBar/>
             <Routes>
-              <Route path='/records' element={<Records/>}/>
-              <Route path='/links' element={<Links/>} />
-              <Route path='/link/:id' element={<ILink/>}/>
-              <Route path='/relation' element={<Relation/>}/>
-              <Route path='/relation/:id' element={<Individual/>}/>
-              <Route path='/profile' element={<Profile/>}/>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/properties' element={<Properties/>} />
             </Routes> 
           </div>
         </div>

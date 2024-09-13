@@ -1,13 +1,13 @@
 import { IoFileTrayFullOutline , IoLinkOutline, IoPeopleOutline,IoPersonOutline , IoLogOutOutline } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   
+  const navigate = useNavigate();
+
   const menuItems = [
-    { name: 'Records', icon: IoFileTrayFullOutline, path: '/records' },
-    { name: 'Links', icon: IoLinkOutline , path: '/links' },
-    { name: 'Relation', icon: IoPeopleOutline , path: '/relation' },
-    { name: 'Profile', icon: IoPersonOutline , path: '/profile' },
+    { name: 'Home', icon: IoFileTrayFullOutline, path: '/' },
+    { name: 'Properties', icon: IoLinkOutline , path: '/properties' },
     { name:'Logout' , icon : IoLogOutOutline ,path : '/logout'}
   ];
 
@@ -15,12 +15,13 @@ const Sidebar = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("_id");
     window.location.reload();
+    navigate('/auth')
   }
 
   return (
     <div className='shadow-lg h-screen bg-white'>
      <div className='flex flex-row justify-center pt-3  font-bold'>
-        OneMed
+        Xenon
       </div>
       <div className="pt-6 px-4">
         {menuItems.map((item) => {
