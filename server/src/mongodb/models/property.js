@@ -34,9 +34,9 @@ const propertySchema = new mongoose.Schema({
 },{timestamps : true});
 
 
-const property = mongoose.model("Property",propertySchema);
+const Property = mongoose.model("Property",propertySchema);
 
-export default property;
+export default Property;
 
 // Property Actions
 export const getProperties = () => Property.find();

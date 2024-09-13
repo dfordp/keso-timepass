@@ -1,4 +1,4 @@
-import { IoFileTrayFullOutline , IoLinkOutline, IoPeopleOutline,IoPersonOutline , IoLogOutOutline } from 'react-icons/io5';
+import { IoFileTrayFullOutline , IoLinkOutline, IoLogOutOutline } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {

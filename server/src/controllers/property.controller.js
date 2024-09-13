@@ -1,4 +1,6 @@
 import { getProperties, getPropertyById, getPropertiesByUserId, createProperty, deletePropertyById, updatePropertyById } from '../mongodb/models/property.js';
+import {getUserById } from '../mongodb/models/user.js';
+import { uploadOnCloudinary } from '../utils/cloudinary.js';
 
 export const getAllProperties = async (req, res) => {
   try {
@@ -44,9 +46,29 @@ export const getPropertiesByUser = async (req, res) => {
 
 export const createNewProperty = async (req, res) => {
   try {
-    const values = req.body;
-    console.log('Creating property with values:', values);
-    const newProperty = await createProperty(values);
+    const { user_id, sale_type , prop_type,name,price_range,location } = req.body;
+    const {path } = req.file;
+    
+    console.log(location);
+    
+    if (!user_id || !sale_type || !prop_type || !name || !price_range || !location) {
+      return res.sendStatus(400);
+    }
+
+    const userExists = await getUserById(user_id);
+
+    if (!userExists) {
+      return res.status(409).send("User Doesn't Exist");
+    }
+
+    const imageURL = await uploadOnCloudinary(path);
+    const images = imageURL.secure_url;
+
+    const newProperty = await createProperty({
+      user_id, sale_type , prop_type,name,image : images,price_range,location 
+    })
+    
+
     return res.status(201).json(newProperty);
   } catch (error) {
     console.error('Error creating property:', error);
