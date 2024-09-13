@@ -30,6 +30,7 @@ app.get("/", (req, res) => {
 });
 app.use('/api/auth', authRouter);
 
+
 const startServer = async () => {
     try {
         await connectDB(process.env.MONGODB_URL);
